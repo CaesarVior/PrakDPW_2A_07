@@ -1,0 +1,92 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>SIMPUS Mini | Daftar Anggota</title>
+    <link rel="stylesheet" href="../assets/css/style.css" />
+  </head>
+  <body>
+    <header>
+      <h1>SIMPUS-Mini</h1>
+      <input type="checkbox" id="nav-toggle" class="nav-toggle" />
+      <label for="nav-toggle" class="nav-toggle-label">&#9776;</label>
+      <nav>
+        <ul>
+          <li><a href="../index.html">Beranda</a></li>
+          <li><a href="../buku/list.html">Daftar Buku</a></li>
+          <li><a href="./list.html">Daftar Anggota</a></li>
+          <li><a href="./tambah.html">Tambah Anggota</a></li>
+        </ul>
+      </nav>
+    </header>
+
+    <main>
+      <section>
+        <h2>Daftar Anggota</h2>
+        <div class="table-responsive">
+          <table border="1">
+            <thead>
+              <tr>
+                <th rowspan="2">No. Anggota</th>
+                <th rowspan="2">Nama</th>
+                <th rowspan="2">Alamat</th>
+                <th rowspan="2">No. Hp</th>
+                <th colspan="2">Jenis Kelamin</th>
+                <th colspan="3">Aksi</th>
+              </tr>
+
+              <tr>
+                <th>Perempuan</th>
+                <th>Laki-laki</th>
+                <th>Edit</th>
+                <th>Delete</th>
+                <th>Detail</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td>A001</td>
+                <td>Siti Aminah</td>
+                <td>Malang</td>
+                <td>0812xxxx</td>
+                <td>v</td>
+                <td></td>
+                <td>
+                  <button class="button-edit" type="button">Edit</button>
+                </td>
+                <td>
+                  <button class="button-delete" type="button">Hapus</button>
+                </td>
+                <td>
+                  <button class="button-detail" type="button">Detail</button>
+                </td>
+              </tr>
+              <tr>
+                <td>A002</td>
+                <td>Budi Santoso</td>
+                <td>Batu</td>
+                <td>0813xxxx</td>
+                <td></td>
+                <td>v</td>
+                <td>
+                  <button class="button-edit" type="button">Edit</button>
+                </td>
+                <td>
+                  <button class="button-delete" type="button">Hapus</button>
+                </td>
+                <td>
+                  <button class="button-detail" type="button">Detail</button>
+                </td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+      </section>
+    </main>
+
+    <footer>
+      <p>&copy; 2024 SIMPUS MINI &mdash; Jobsheet 2.</p>
+    </footer>
+  </body>
+</html>
