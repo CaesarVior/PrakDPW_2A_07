@@ -18,17 +18,15 @@
       <div class="container">
         <a class="navbar-brand fw-semibold" href="../index.html">SIMPUS-Mini</a>
         <button
-          class="navbar-toggler"
           type="button"
-          data-bs-toggle="collapse"
-          data-bs-target="#navMenu"
-          aria-controls="navMenu"
-          aria-expanded="false"
-          aria-label="Toggle navigation"
+          id="nav-toggle-btn"
+          class="nav-toggle-label"
+          aria-label="Menu"
         >
-          <span class="navbar-toggler-icon"></span>
+          &#9776;
         </button>
-        <nav class="collapse navbar-collapse" id="navMenu">
+        </button>
+        <nav id="navMenu">
           <ul class="navbar-nav ms-auto">
             <li class="nav-item">
               <a class="nav-link" href="../index.html">Beranda</a>
@@ -40,7 +38,7 @@
               <a class="nav-link" href="tambah.html">Tambah Buku</a>
             </li>
             <li class="nav-item">
-              <a class="nav-link" href="/anggota/list.html">Daftar Anggota</a>
+              <a class="nav-link" href="../anggota/list.html">Daftar Anggota</a>
             </li>
           </ul>
         </nav>
@@ -57,7 +55,7 @@
         <div class="table-responsive">
           <table class="table table-striped table-hover align-middle">
             <thead style="background-color: #403d88">
-              <tr>
+              <tr>  
                 <th>Judul</th>
                 <th>Pengarang</th>
                 <th>Tahun</th>
@@ -129,7 +127,7 @@
     <footer>
       <p>&copy; 2024 SIMPUS MINI &mdash; Jobsheet 5.</p>
     </footer>
-    <script src="assets/js/app.js"></script>
+    <script src="../assets/js/app.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
   </body>
 </html>

@@ -193,14 +193,35 @@ footer {
   margin-top: 18rem;
 }
 
-.nav-toggle {
-  display: none;
+.error {
+  display: block;
+  color: #d9534f;
+  font-size: 0.85rem;
+  margin-top: 0.25rem;
 }
+
+.search-box {
+  margin-bottom: 1rem;
+}
+
+.search-box input {
+  width: 100%;
+  max-width: 320px;
+  padding: 0.5rem 0.75rem;
+  border: 1px solid #cdd4da;
+  border-radius: 4px;
+}
+
+/* .nav-toggle {
+  display: none;
+} */
 
 .nav-toggle-label {
   display: none;
   font-size: 1.6rem;
   color: #fff;
+  background: none;
+  border: none;
   cursor: pointer;
 }
 
@@ -225,6 +246,10 @@ footer {
   }
 
   .nav-toggle-label {
+    display: block; /* MUNCULKAN tombol hanya di layar mobile (HP) */
+  }
+
+  header nav.nav-open {
     display: block;
   }
 
