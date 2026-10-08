@@ -72,12 +72,13 @@ section h2 {
 }
 
 /* kartu statistik */
-/* main section:nth-of-type(2) {
+main section:nth-of-type(2) {
   display: grid;
   grid-template-columns: repeat(4, 1fr);
   gap: 1rem;
   text-align: center;
-} */
+}
+*/
 
 /* main section:nth-of-type(2) article {
   background-color: #fff6fd;
@@ -96,7 +97,7 @@ main section:nth-of-type(2) article p {
   font-size: 1.8rem;
   font-weight: 700;
   color: #403d88;
-} */
+}
 
 /* tabel */
 table {

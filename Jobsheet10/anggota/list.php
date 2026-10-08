@@ -1,5 +1,7 @@
 <?php
-    $page_title = "Daftar Buku";
+    require __DIR__ . '/../includes/auth.php';
+
+    $page_title = "Daftar Anggota";
     include __DIR__ . '/../includes/header.php';
     require __DIR__ . '/../includes/koneksi.php';
 
@@ -7,50 +9,47 @@
     unset($_SESSION['flash']);
 
     $perPage = 5;
-    $page = max(1, (int) ($_GET['page'] ?? 1));;
+    $page = max(1, (int) ($_GET['page'] ?? 1));
     $offset = ($page - 1) * $perPage;
     $keyword = trim($_GET['q'] ?? '');
 
     if ($keyword !== '') {
-        $hitung = $pdo->prepare("SELECT COUNT(*) FROM buku WHERE 
-        judul ILIKE :kw");
+        $hitung = $pdo->prepare("SELECT COUNT(*) 
+        FROM anggota WHERE nama ILIKE :kw");
         $hitung->execute(['kw' => '%' . $keyword . '%']);
         $totalRows = $hitung->fetchColumn();
 
-        $stmt = $pdo->prepare("SELECT * FROM buku WHERE judul ILIKE 
-        :kw ORDER BY id DESC LIMIT :limit OFFSET :offset");
+        $stmt = $pdo->prepare("SELECT * FROM 
+        anggota WHERE nama ILIKE :kw ORDER BY id DESC LIMIT :limit OFFSET :offset");
         $stmt->bindValue('kw', '%' . $keyword . '%');
     } else {
-        $totalRows = $pdo->query("SELECT COUNT(*) FROM buku")->fetchColumn();
-        $stmt = $pdo->prepare("SELECT * FROM buku ORDER BY id 
-        DESC LIMIT :limit OFFSET :offset");
+        $totalRows = $pdo->query("SELECT COUNT(*) FROM anggota")->fetchColumn();
+        $stmt = $pdo->prepare("SELECT * FROM anggota ORDER BY id DESC LIMIT :limit OFFSET :offset");
     }
 
     $stmt->bindValue('limit', $perPage, PDO::PARAM_INT);
     $stmt->bindValue('offset', $offset, PDO::PARAM_INT);
     $stmt->execute();
-    $daftarBuku = $stmt->fetchAll(PDO::FETCH_ASSOC);
+    $daftarAnggota = $stmt->fetchAll(PDO::FETCH_ASSOC);
 
     $totalPages = max(1, (int) ceil($totalRows / $perPage));
 ?>
 
 <main>
     <section>
-        <h2>Daftar Buku</h2>
-
+        <h2>Daftar Anggota</h2>
         <?php if ($flash): ?>
             <div class="alert alert-<?php echo $flash['type']; ?>">
                 <?php echo $flash['pesan']; ?>
             </div>
         <?php endif; ?>
 
-        <p><a href="tambah.php" class="btn-tambah">+ Tambah Buku Baru</a></p>
-
+        <p><a href="tambah.php" class="btn-tambah">+ Tambah Anggota Baru</a></p>
         <div class="search-box">
             <form method="get" action="list.php">
                 <span>
-                    <label for="search-input">Cari Judul Buku</label><br>
-                    <input type="text" id="search-input" name="q" value="<?php echo $keyword; ?>" placeholder="Ketik judul buku...">
+                    <label for="search-input">Cari Nama Anggota</label><br>
+                    <input type="text" id="search-input" name="q" value="<?php echo $keyword; ?>" placeholder="Ketik nama anggota...">
                 </span>
                 <button type="submit">Cari</button>
             </form>
@@ -58,33 +57,29 @@
         <table>
             <thead>
                 <tr>
-                    <th>Judul</th>
-                    <th>Pengarang</th>
-                    <th>Tahun</th>
-                    <th>ISBN</th>
-                    <th>Stok</th>
-                    <th>Kategori</th>
+                    <th>Nama</th>
+                    <th>No. Anggota</th>
+                    <th>Alamat</th>
+                    <th>No. Telepon</th>
                     <th>Aksi</th>
                 </tr>
             </thead>
             <tbody>
-                <?php if (empty($daftarBuku)): ?>
+                <?php if (empty($daftarAnggota)): ?>
                     <tr>
-                        <td colspan="7" style="text-align: center;">Tidak ada data buku.</td>
+                        <td colspan="5" style="text-align: center;">Tidak ada data anggota.</td>
                     </tr>
                 <?php else: ?>
-                    <?php foreach ($daftarBuku as $buku): ?>
+                    <?php foreach ($daftarAnggota as $anggota): ?>
                         <tr>
-                            <td><?php echo $buku['judul']; ?></td>
-                            <td><?php echo $buku['pengarang']; ?></td>
-                            <td><?php echo $buku['tahun']; ?></td>
-                            <td><?php echo $buku['isbn']; ?></td>
-                            <td><?php echo $buku['stok']; ?></td>
-                            <td><?php echo ucfirst($buku['kategori']); ?></td>
-                           <td>
-                                <a href="edit.php?id=<?php echo $buku['id']; ?>" class="btn-edit">Edit</a>
+                            <td><?php echo $anggota['nama']; ?></td>
+                            <td><?php echo $anggota['no_anggota']; ?></td>
+                            <td><?php echo $anggota['alamat']; ?></td>
+                            <td><?php echo $anggota['no_hp']; ?></td>
+                            <td>
+                                <a href="edit.php?id=<?php echo $anggota['id']; ?>" class="btn-edit">Edit</a>
                                 <form class="form-hapus" method="post" action="hapus.php">
-                                    <input type="hidden" name="id" value="<?php echo $buku['id']; ?>">
+                                    <input type="hidden" name="id" value="<?php echo $anggota['id']; ?>">
                                     <button type="submit" class="btn-hapus">Hapus</button>
                                 </form>
                             </td>
@@ -103,5 +98,4 @@
         </nav>
     </section>
 </main>
-
 <?php include __DIR__ . '/../includes/footer.php'; ?>

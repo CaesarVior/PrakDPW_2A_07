@@ -44,8 +44,6 @@
             </div>
         <?php endif; ?>
 
-        <p><a href="tambah.php" class="btn-tambah">+ Tambah Buku Baru</a></p>
-
         <div class="search-box">
             <form method="get" action="list.php">
                 <span>
