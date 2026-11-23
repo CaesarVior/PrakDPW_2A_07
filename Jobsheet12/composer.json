@@ -1,6 +1,6 @@
 {
   "name": "simpus-mini",
-  "description": "Aplikasi Sistem Perpustakaan Mini",
+  "description": "Sistem Perpustakaan Mini",
   "type": "project",
   "require": {
     "php": "^8.2",
